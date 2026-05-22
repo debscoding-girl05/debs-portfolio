@@ -1,182 +1,164 @@
-import { useRef } from "react";
 import { motion } from "framer-motion";
-import {
-  FaGithub,
-  FaLink,
-  FaChevronLeft,
-  FaChevronRight,
-} from "react-icons/fa";
-import Slider from "react-slick";
+import { Github, ExternalLink } from "lucide-react";
 
-const projects = [
+type Project = {
+  title: string;
+  description: string;
+  technologies: string[];
+  github?: string;
+  liveLink?: string;
+  gradient: string;
+  emoji: string;
+};
+
+const projects: Project[] = [
   {
-    title: "E-commerce Platform",
+    title: "AidMate",
     description:
-      "Plateforme de commerce électronique complète avec gestion des stocks et paiements sécurisés.",
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "Node.js", "MongoDB"],
-    github: "https://github.com/example/repo",
-    liveLink: "https://example.com",
+      "Assistant médical IA multilingue : guidance des premiers secours en 52 langues, protocoles WHO intégrés, accessible partout dans le monde.",
+    technologies: ["React", "Node.js", "TensorFlow", "Python"],
+    liveLink: "https://aidmateassist.vercel.app",
+    gradient: "from-[#2E6DA4] to-[#1A3A5C]",
+    emoji: "🩺",
   },
   {
-    title: "Application Mobile de Livraison",
+    title: "MonArgent AI",
     description:
-      "Application de livraison en temps réel avec suivi GPS et notifications push.",
-    image:
-      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=800&q=80",
-    technologies: ["React Native", "Firebase", "Google Maps API"],
-    github: "https://github.com/example/repo",
-    liveLink: "https://example.com",
+      "Assistant financier conversationnel WhatsApp pour les non-bancarisés en Afrique francophone, avec paiements Mobile Money via CinetPay.",
+    technologies: ["Node.js", "TypeScript", "LLM Groq", "Supabase", "WhatsApp API"],
+    gradient: "from-[#F0A050] to-[#2E6DA4]",
+    emoji: "💬",
   },
   {
-    title: "Système de Gestion RH",
+    title: "Jaam",
     description:
-      "Solution complète de gestion des ressources humaines avec tableaux de bord analytiques.",
-    image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
-    technologies: ["Vue.js", "Laravel", "PostgreSQL"],
-    github: "https://github.com/example/repo",
-    liveLink: "https://example.com",
+      "Application full stack de gestion RH (employés, congés, performance) avec un module IA intégré pour l'aide à la décision.",
+    technologies: ["React", "Node.js", "PostgreSQL", "Python", "TensorFlow"],
+    gradient: "from-[#1A3A5C] to-[#2E6DA4]",
+    emoji: "👥",
   },
   {
-    title: "Web Application",
+    title: "Gestion Agence Bus",
     description:
-      "Une application web moderne avec une interface utilisateur intuitive et des fonctionnalités avancées.",
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80",
-    technologies: ["Angular", "Node.js", "Express"],
-    github: "https://github.com/example/repo",
-    liveLink: "https://example.com",
+      "Plateforme web + application mobile pour la gestion d'une agence de bus : réservations, suivi, dashboard administrateur. Architecture MVC + API REST.",
+    technologies: ["React", "TypeScript", "React Native", "SQL"],
+    liveLink: "https://gestion-bus-react-website-dashboard.vercel.app",
+    gradient: "from-[#2E6DA4] to-[#F0A050]",
+    emoji: "🚌",
   },
   {
-    title: "E-learning Platform",
+    title: "DevSecOps Workflow IA",
     description:
-      "Plateforme d'apprentissage en ligne avec gestion des cours et des évaluations.",
-    image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "Node.js", "MongoDB"],
-    github: "https://github.com/example/repo",
-    liveLink: "https://example.com",
+      "Pipeline CI/CD automatisé avec revue de code intelligente par LLM : détection de vulnérabilités et suggestions d'amélioration à chaque pull request.",
+    technologies: ["GitHub Actions", "Python", "API LLM", "Docker"],
+    gradient: "from-[#1A3A5C] to-[#F0A050]",
+    emoji: "⚙️",
+  },
+  {
+    title: "AdminDBFoodDeliv",
+    description:
+      "Dashboard administrateur pour une application de livraison de nourriture : gestion des commandes, des restaurants et statistiques temps réel.",
+    technologies: ["React", "TypeScript", "Vite", "Tailwind CSS"],
+    github: "https://github.com/debscoding-girl05/AdminDBFoodDeliv",
+    gradient: "from-[#F0A050] to-[#1A3A5C]",
+    emoji: "🍽️",
   },
 ];
 
-// Scroll-trigger animation
-const scrollAnimation = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-};
-
 const Projects = () => {
-  const sliderRef = useRef<Slider | null>(null);
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    centerMode: true,
-    centerPadding: "50px",
-    autoplay: true,
-    autoplaySpeed: 3000,
-    cssEase: "ease-in-out",
-    pauseOnHover: true,
-    responsive: [
-      {
-        breakpoint: 1024, // Tablet
-        settings: {
-          slidesToShow: 2,
-          centerPadding: "30px",
-        },
-      },
-      {
-        breakpoint: 640, // Mobile
-        settings: {
-          slidesToShow: 1,
-          centerPadding: "20px",
-        },
-      },
-    ],
-  };
-
   return (
-    <section id="projects" className="py-16 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8">
-          Nos Projets
-        </h2>
+    <section id="projects" className="py-20 bg-white">
+      <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <span className="inline-block px-4 py-1 rounded-full bg-[#F0A050]/15 text-[#1A3A5C] text-sm font-semibold mb-3">
+            Réalisations
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1A3A5C] mb-4">
+            Mes projets
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-[#2E6DA4] to-[#F0A050] mx-auto rounded-full"></div>
+          <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+            Une sélection de projets que j'ai conçus et développés, alliant
+            développement full stack et intelligence artificielle.
+          </p>
+        </motion.div>
 
-        <Slider ref={sliderRef} {...settings}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial="hidden"
-              whileInView="visible"
+            <motion.article
+              key={project.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              variants={scrollAnimation}
-              className="px-2 sm:px-4"
+              transition={{ duration: 0.6, delay: 0.1 * (index % 3) }}
+              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 flex flex-col"
             >
-              <div className="relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow group">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-[200px] sm:h-[300px] md:h-[350px] object-cover transition-all duration-500 group-hover:opacity-70"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
-                  <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-4 text-center">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-gray-200 text-center mb-2 sm:mb-4 px-4">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-1 sm:gap-2 justify-center mb-3">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-2 sm:px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs sm:text-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex gap-3 sm:gap-4">
+              <div
+                className={`h-40 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}
+              >
+                <span className="text-6xl drop-shadow-lg group-hover:scale-110 transition-transform duration-500">
+                  {project.emoji}
+                </span>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+              </div>
+
+              <div className="p-6 flex flex-col flex-grow">
+                <h3 className="text-xl font-bold text-[#1A3A5C] mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2.5 py-1 bg-[#EAF1F8] text-[#1A3A5C] rounded-full text-xs font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex gap-3 pt-3 border-t border-gray-100">
+                  {project.github && (
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-sm font-medium text-[#1A3A5C] hover:text-[#F0A050] transition-colors"
                     >
-                      <FaGithub className="text-lg sm:text-2xl hover:text-gray-400 transition-colors" />
+                      <Github size={16} />
+                      Code
                     </a>
+                  )}
+                  {project.liveLink && (
                     <a
                       href={project.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-sm font-medium text-[#1A3A5C] hover:text-[#F0A050] transition-colors"
                     >
-                      <FaLink className="text-lg sm:text-2xl hover:text-gray-400 transition-colors" />
+                      <ExternalLink size={16} />
+                      Démo live
                     </a>
-                  </div>
+                  )}
+                  {!project.github && !project.liveLink && (
+                    <span className="text-xs text-gray-400 italic">
+                      Projet privé / en cours
+                    </span>
+                  )}
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
-        </Slider>
-
-        <div className="absolute top-1/2 left-0 transform -translate-y-1/2 pl-2 sm:pl-4 z-20">
-          <button
-            onClick={() => sliderRef.current?.slickPrev()}
-            className="text-base sm:text-xl text-white bg-blue-500 p-2 sm:p-3 rounded-full hover:bg-blue-600 transition-colors"
-          >
-            <FaChevronLeft />
-          </button>
-        </div>
-        <div className="absolute top-1/2 right-0 transform -translate-y-1/2 pr-2 sm:pr-4 z-20">
-          <button
-            onClick={() => sliderRef.current?.slickNext()}
-            className="text-base sm:text-xl text-white bg-blue-500 p-2 sm:p-3 rounded-full hover:bg-blue-600 transition-colors"
-          >
-            <FaChevronRight />
-          </button>
         </div>
       </div>
     </section>

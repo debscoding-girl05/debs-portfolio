@@ -1,27 +1,34 @@
-import { Globe, Smartphone, Code } from "lucide-react";
-import { motion } from "framer-motion"; // Import motion for animations
+import { Globe, Smartphone, Brain, Database } from "lucide-react";
+import { motion } from "framer-motion";
 
 const services = [
   {
     icon: Globe,
-    title: "Développement Web",
+    title: "Applications Web",
     description:
-      "Sites web responsifs, applications web progressives et plateformes e-commerce sur mesure.",
-    features: ["Frontend moderne", "Backend robuste", "Optimisation SEO"],
+      "Je développe des applications web modernes, performantes et accessibles avec React, TypeScript et Tailwind CSS.",
+    features: ["React / TypeScript", "API REST & Firebase", "UI responsive"],
   },
   {
     icon: Smartphone,
     title: "Applications Mobiles",
     description:
-      "Applications natives et cross-platform pour iOS et Android avec une expérience utilisateur exceptionnelle.",
-    features: ["iOS & Android", "Design intuitif", "Performance optimale"],
+      "Je crée des apps mobiles cross-platform avec React Native, connectées à des backends robustes.",
+    features: ["React Native", "Firebase / Supabase", "UX soignée"],
   },
   {
-    icon: Code,
-    title: "Consultation Technique",
+    icon: Brain,
+    title: "Intégration IA",
     description:
-      "Expertise technique, audit de code et conseils stratégiques pour vos projets digitaux.",
-    features: ["Architecture", "Sécurité", "Scalabilité"],
+      "J'intègre du Machine Learning et des LLMs dans des produits concrets : chatbots, assistants, automatisations.",
+    features: ["TensorFlow / PyTorch", "API LLM (Groq, OpenAI)", "NLP & vision"],
+  },
+  {
+    icon: Database,
+    title: "Data & DevSecOps",
+    description:
+      "Je structure les données et automatise les workflows avec des pipelines CI/CD sécurisés.",
+    features: ["PostgreSQL / MySQL", "GitHub Actions / Docker", "Power BI"],
   },
 ];
 
@@ -29,38 +36,53 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="py-20 bg-gradient-to-tl from-blue-50 to-purple-50"
+      className="py-20 bg-gradient-to-tl from-[#EAF1F8] via-white to-[#FAF8F5]"
     >
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
-          Nos Services
-        </h2>
+      <div className="container max-w-6xl mx-auto px-6">
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <span className="inline-block px-4 py-1 rounded-full bg-[#F0A050]/15 text-[#1A3A5C] text-sm font-semibold mb-3">
+            Ce que je propose
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1A3A5C] mb-4">
+            Mes domaines d'expertise
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-[#2E6DA4] to-[#F0A050] mx-auto rounded-full"></div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }} // Initial state for scroll animation
-              whileInView={{ opacity: 1, y: 0 }} // Animate to final state when in view
-              transition={{ delay: 0.2 * index, duration: 0.8 }} // Delay based on index for staggered effect
-              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-100"
+              key={service.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 * index, duration: 0.7 }}
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-[#F0A050]"
             >
-              <div className="flex justify-center mb-6">
-                <service.icon className="w-16 h-16 text-blue-600" />
+              <div className="flex justify-center mb-5">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#1A3A5C] to-[#2E6DA4] flex items-center justify-center shadow-md">
+                  <service.icon className="text-white" size={26} />
+                </div>
               </div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4 text-center">
+              <h3 className="text-lg font-bold text-[#1A3A5C] mb-3 text-center">
                 {service.title}
               </h3>
-              <p className="text-gray-700 mb-6 text-center">
+              <p className="text-gray-600 mb-5 text-center text-sm leading-relaxed">
                 {service.description}
               </p>
-              <ul className="space-y-3">
-                {service.features.map((feature, featureIndex) => (
+              <ul className="space-y-2">
+                {service.features.map((feature) => (
                   <li
-                    key={featureIndex}
-                    className="flex items-center text-gray-600 text-lg"
+                    key={feature}
+                    className="flex items-center text-gray-700 text-sm"
                   >
-                    <span className="w-2.5 h-2.5 bg-blue-600 rounded-full mr-3"></span>
+                    <span className="w-2 h-2 bg-[#F0A050] rounded-full mr-2 flex-shrink-0"></span>
                     {feature}
                   </li>
                 ))}

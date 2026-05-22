@@ -1,82 +1,155 @@
-import { motion } from "framer-motion"; // Import framer-motion
-import { DiCss3, DiDatabase, DiHtml5, DiJava, DiPython } from "react-icons/di";
-import { FaJsSquare, FaNodeJs } from "react-icons/fa";
-import { IoLogoFirebase } from "react-icons/io5";
-import { RiReactjsLine } from "react-icons/ri";
-import { SiFlutter, SiPhp } from "react-icons/si";
-import { TbBrandReactNative } from "react-icons/tb";
+import { motion } from "framer-motion";
+import {
+  Code2,
+  Server,
+  Brain,
+  GitBranch,
+  BarChart3,
+} from "lucide-react";
 
-const technologies = [
-  { id: 1, icon: RiReactjsLine, color: "text-cyan-400" },
-  { id: 2, icon: TbBrandReactNative, color: "text-blue-500" },
-  { id: 3, icon: FaNodeJs, color: "text-green-500" },
-  { id: 4, icon: FaJsSquare, color: "text-yellow-500" },
-  { id: 5, icon: IoLogoFirebase, color: "text-orange-500" },
-  { id: 6, icon: SiPhp, color: "text-purple-600" },
-  { id: 7, icon: DiDatabase, color: "text-red-500" },
-  { id: 8, icon: DiCss3, color: "text-blue-400" },
-  { id: 9, icon: DiHtml5, color: "text-orange-400" },
-  { id: 10, icon: SiFlutter, color: "text-sky-500" },
-  { id: 11, icon: DiJava, color: "text-indigo-500" },
-  { id: 12, icon: DiPython, color: "text-blue-300" },
-];
-
-// Scroll-trigger animation
-const scrollAnimation = {
-  hidden: { opacity: 0, y: 50 }, // Initial state
-  visible: { opacity: 1, y: 0, transition: { duration: 1 } }, // Smooth slide-in
+type SkillGroup = {
+  icon: typeof Code2;
+  title: string;
+  color: string;
+  skills: string[];
 };
+
+const skillGroups: SkillGroup[] = [
+  {
+    icon: Code2,
+    title: "Frontend",
+    color: "from-[#2E6DA4] to-[#1A3A5C]",
+    skills: [
+      "React",
+      "TypeScript",
+      "React Native",
+      "Angular",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    icon: Server,
+    title: "Backend",
+    color: "from-[#1A3A5C] to-[#2E6DA4]",
+    skills: [
+      "Node.js",
+      "Express",
+      "REST API",
+      "Firebase",
+      "PostgreSQL",
+      "MySQL",
+    ],
+  },
+  {
+    icon: Brain,
+    title: "IA & Data",
+    color: "from-[#F0A050] to-[#2E6DA4]",
+    skills: [
+      "Python",
+      "TensorFlow",
+      "PyTorch",
+      "Pandas",
+      "NumPy",
+      "Machine Learning",
+      "API LLM (Groq, OpenAI)",
+    ],
+  },
+  {
+    icon: GitBranch,
+    title: "DevSecOps",
+    color: "from-[#2E6DA4] to-[#F0A050]",
+    skills: [
+      "Git / GitHub",
+      "CI/CD",
+      "GitHub Actions",
+      "Docker",
+      "Agile / Scrum",
+    ],
+  },
+  {
+    icon: BarChart3,
+    title: "Data Viz",
+    color: "from-[#1A3A5C] to-[#F0A050]",
+    skills: ["Power BI", "Dashboards interactifs"],
+  },
+];
 
 const Technologies = () => {
   return (
-    <section id="technologies" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
-          Nos Technologies
-        </h2>
-        <div className="flex justify-center flex-wrap gap-6">
-          {technologies.map(({ id, icon: Icon, color }) => (
+    <section id="technologies" className="py-20 bg-[#FAF8F5]">
+      <div className="container max-w-6xl mx-auto px-6">
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <span className="inline-block px-4 py-1 rounded-full bg-[#F0A050]/15 text-[#1A3A5C] text-sm font-semibold mb-3">
+            Stack technique
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1A3A5C] mb-4">
+            Mes compétences
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-[#2E6DA4] to-[#F0A050] mx-auto rounded-full"></div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skillGroups.map((group, index) => (
             <motion.div
-              key={id}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.2 }} // Trigger animation when 20% of the element is visible
-              variants={scrollAnimation}
-              className={`bg-white p-6 rounded-full shadow-lg flex justify-center items-center floating-${id}`}
-              style={{
-                width: "90px", // Fixed width for the circle
-                height: "90px", // Fixed height for the circle
-              }}
+              key={group.title}
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 * index, duration: 0.6 }}
             >
-              <Icon className={`text-4xl ${color}`} />
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${group.color} flex items-center justify-center shadow-md`}
+                >
+                  <group.icon className="text-white" size={22} />
+                </div>
+                <h3 className="text-lg font-bold text-[#1A3A5C]">
+                  {group.title}
+                </h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {group.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1 rounded-full bg-[#EAF1F8] text-[#1A3A5C] text-sm font-medium border border-[#2E6DA4]/20 hover:border-[#F0A050] hover:bg-[#F0A050]/10 transition-colors"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          className="mt-10 bg-white rounded-2xl p-6 shadow-lg max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <h3 className="text-lg font-bold text-[#1A3A5C] mb-3 text-center">
+            Langues
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            <span className="px-4 py-2 rounded-full bg-gradient-to-r from-[#1A3A5C] to-[#2E6DA4] text-white text-sm font-semibold">
+              Français — natif
+            </span>
+            <span className="px-4 py-2 rounded-full bg-gradient-to-r from-[#2E6DA4] to-[#F0A050] text-white text-sm font-semibold">
+              Anglais — courant (B2)
+            </span>
+          </div>
+        </motion.div>
       </div>
-      {/* CSS for floating animations */}
-      <style>{`
-        ${technologies
-          .map(
-            ({ id }) => `
-        @keyframes float-${id} {
-          0% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-          100% {
-            transform: translateY(0);
-          }
-        }
-        .floating-${id} {
-          animation: float-${id} 3s ease-in-out infinite;
-          animation-delay: ${id * 0.2}s;
-        }
-      `
-          )
-          .join("\n")}
-      `}</style>
     </section>
   );
 };
