@@ -67,7 +67,7 @@ const About = () => {
                 afin de mettre mes compétences au service de projets ambitieux.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                Basée à <strong>Paris</strong>, je suis ouverte à la{" "}
+                Basée au <strong>Cameroun</strong>, je suis ouverte à la{" "}
                 <strong>mobilité nationale</strong>. Ce qui m'anime : créer des
                 produits techniques qui ont du sens, à l'intersection du
                 développement logiciel et de l'IA appliquée.
