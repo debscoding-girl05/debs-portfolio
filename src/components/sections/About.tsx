@@ -1,5 +1,46 @@
 import { Code2, Brain, Rocket, GraduationCap } from "lucide-react";
 import { motion } from "framer-motion";
+import { RiReactjsLine, RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
+import { FaNodeJs, FaPython, FaDocker, FaAws, FaGitAlt, FaFigma, FaJava } from "react-icons/fa";
+import {
+  SiTypescript,
+  SiTensorflow,
+  SiMongodb,
+  SiJavascript,
+  SiPytorch,
+  SiPostgresql,
+  SiKubernetes,
+  SiGithubactions,
+  SiFlutter,
+  SiFirebase,
+  SiOpenai,
+  SiGraphql,
+} from "react-icons/si";
+
+const floatingTech = [
+  { id: 1, Icon: RiReactjsLine, color: "text-cyan-500" },
+  { id: 2, Icon: SiTypescript, color: "text-blue-600" },
+  { id: 3, Icon: SiJavascript, color: "text-yellow-400" },
+  { id: 4, Icon: RiNextjsFill, color: "text-black" },
+  { id: 5, Icon: RiTailwindCssFill, color: "text-sky-400" },
+  { id: 6, Icon: FaNodeJs, color: "text-green-600" },
+  { id: 7, Icon: FaPython, color: "text-yellow-500" },
+  { id: 8, Icon: FaJava, color: "text-red-600" },
+  { id: 9, Icon: SiTensorflow, color: "text-orange-500" },
+  { id: 10, Icon: SiPytorch, color: "text-orange-600" },
+  { id: 11, Icon: SiOpenai, color: "text-gray-800" },
+  { id: 12, Icon: SiMongodb, color: "text-green-700" },
+  { id: 13, Icon: SiPostgresql, color: "text-blue-700" },
+  { id: 14, Icon: SiFirebase, color: "text-amber-500" },
+  { id: 15, Icon: SiGraphql, color: "text-pink-600" },
+  { id: 16, Icon: FaDocker, color: "text-sky-500" },
+  { id: 17, Icon: SiKubernetes, color: "text-blue-500" },
+  { id: 18, Icon: SiGithubactions, color: "text-indigo-500" },
+  { id: 19, Icon: FaAws, color: "text-[#F0A050]" },
+  { id: 20, Icon: FaGitAlt, color: "text-orange-600" },
+  { id: 21, Icon: SiFlutter, color: "text-sky-500" },
+  { id: 22, Icon: FaFigma, color: "text-pink-500" },
+];
 
 const highlights = [
   {
@@ -26,9 +67,9 @@ const About = () => {
   return (
     <section
       id="about"
-      className="py-20 bg-gradient-to-br from-white via-[#FAF8F5] to-[#EAF1F8]"
+      className="relative overflow-hidden py-20 bg-gradient-to-br from-white via-[#FAF8F5] to-[#EAF1F8]"
     >
-      <div className="container max-w-6xl mx-auto px-6">
+      <div className="container max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
           className="text-center mb-14"
           initial={{ opacity: 0, y: 30 }}
@@ -76,6 +117,18 @@ const About = () => {
           </div>
         </motion.div>
 
+        <div className="flex justify-center flex-wrap gap-6 mb-14">
+          {floatingTech.map(({ id, Icon, color }) => (
+            <div
+              key={id}
+              className={`bg-white rounded-full shadow-lg flex justify-center items-center floating-${id}`}
+              style={{ width: "90px", height: "90px" }}
+            >
+              <Icon className={`text-4xl ${color}`} />
+            </div>
+          ))}
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {highlights.map((item, index) => (
             <motion.div
@@ -99,6 +152,24 @@ const About = () => {
           ))}
         </div>
       </div>
+
+      <style>{`
+        ${floatingTech
+          .map(
+            ({ id }) => `
+        @keyframes float-${id} {
+          0% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+          100% { transform: translateY(0); }
+        }
+        .floating-${id} {
+          animation: float-${id} 3s ease-in-out infinite;
+          animation-delay: ${id * 0.2}s;
+        }
+        `
+          )
+          .join("\n")}
+      `}</style>
     </section>
   );
 };
