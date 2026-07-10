@@ -69,7 +69,7 @@ const Contact = () => {
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-[#2E6DA4] to-[#F0A050] mx-auto rounded-full"></div>
           <p className="text-gray-600 mt-4 max-w-xl mx-auto">
-            Une opportunité d'alternance, un projet à discuter ou simplement
+            Un projet à discuter, une opportunité de collaboration ou simplement
             envie d'échanger ? N'hésitez pas à me contacter.
           </p>
         </motion.div>
@@ -91,7 +91,7 @@ const Contact = () => {
             <ContactDetail
               icon={<MapPin className="w-6 h-6 text-white" />}
               label="Localisation"
-              value="Paris, France — mobilité nationale"
+              value="Yaoundé, Cameroun — disponible en télétravail"
             />
             <ContactDetail
               icon={<Github className="w-6 h-6 text-white" />}
@@ -111,7 +111,7 @@ const Contact = () => {
             <div className="pt-6 border-t border-gray-100">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F0A050]/15 text-[#1A3A5C] text-sm font-semibold">
                 <CheckCircle2 size={16} className="text-[#F0A050]" />
-                Disponible pour alternance 2026
+                Disponible pour de nouveaux projets
               </div>
             </div>
           </motion.div>

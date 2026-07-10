@@ -21,7 +21,7 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
           >
             <Sparkles size={16} className="text-[#F0A050]" />
-            Recherche alternance — septembre 2026
+            Disponible pour de nouvelles opportunités
           </motion.div>
 
           <motion.h1
@@ -51,9 +51,9 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.35 }}
           >
-            Étudiante en Master Informatique à l'INSA Hauts-de-France, je conçois
-            des applications web et mobiles modernes en y intégrant de
-            l'intelligence artificielle pour résoudre des problèmes concrets.
+            Développeuse full stack junior et passionnée, je conçois des applications web
+            et mobiles modernes en y intégrant de l'intelligence artificielle
+            pour résoudre des problèmes concrets.
           </motion.p>
 
           <motion.div
@@ -63,7 +63,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <MapPin size={16} className="text-[#F0A050]" />
-            Paris, France — mobilité nationale
+            Yaoundé, Cameroun — disponible en télétravail
           </motion.div>
 
           <motion.div

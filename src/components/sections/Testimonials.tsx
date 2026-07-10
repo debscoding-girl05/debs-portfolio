@@ -37,15 +37,6 @@ const experiences: TimelineItem[] = [
 const education: TimelineItem[] = [
   {
     type: "edu",
-    period: "2026 — En cours",
-    title: "Master Informatique",
-    org: "INSA Hauts-de-France",
-    location: "France",
-    description:
-      "Spécialisation en ingénierie logicielle, IA et systèmes distribués. À la recherche d'une alternance pour septembre 2026.",
-  },
-  {
-    type: "edu",
     period: "2022 — 2026",
     title: "Licence IA & Big Data",
     org: "Keyce Academy",

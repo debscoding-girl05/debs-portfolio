@@ -15,7 +15,7 @@ const Footer = () => {
             <p className="text-gray-200 text-sm leading-relaxed">
               Full Stack Developer & AI Engineer.
               <br />
-              À la recherche d'une alternance pour septembre 2026.
+              Disponible pour de nouveaux projets et collaborations.
             </p>
           </div>
 
@@ -79,7 +79,7 @@ const Footer = () => {
                 <Mail size={18} />
               </a>
             </div>
-            <p className="text-gray-200 text-sm">Paris, France</p>
+            <p className="text-gray-200 text-sm">Yaoundé, Cameroun</p>
             <p className="text-gray-200 text-sm">dtakouessa@gmail.com</p>
           </div>
         </div>

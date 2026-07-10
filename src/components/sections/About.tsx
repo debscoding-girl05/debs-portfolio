@@ -99,17 +99,17 @@ const About = () => {
             </div>
             <div>
               <h3 className="text-xl font-bold text-[#1A3A5C] mb-2">
-                Étudiante passionnée, à la recherche d'une alternance
+                Développeuse junior passionnée, entre web et IA
               </h3>
               <p className="text-gray-700 leading-relaxed mb-3">
-                Je suis actuellement en <strong>Master Informatique à l'INSA Hauts-de-France</strong>,
-                après une Licence en IA & Big Data obtenue avec la mention Très
-                Bien (16,46/20). Je recherche une <strong>alternance pour septembre 2026</strong>{" "}
-                afin de mettre mes compétences au service de projets ambitieux.
+                Diplômée d'une <strong>Licence en IA & Big Data</strong> obtenue
+                avec la mention Très Bien (16,46/20), je suis une{" "}
+                <strong>développeuse junior</strong> qui met ses compétences au
+                service de projets ambitieux.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                Basée au <strong>Cameroun</strong>, je suis ouverte à la{" "}
-                <strong>mobilité nationale</strong>. Ce qui m'anime : créer des
+                Basée à <strong>Yaoundé, au Cameroun</strong>, je suis ouverte aux{" "}
+                <strong>collaborations à distance</strong>. Ce qui m'anime : créer des
                 produits techniques qui ont du sens, à l'intersection du
                 développement logiciel et de l'IA appliquée.
               </p>
